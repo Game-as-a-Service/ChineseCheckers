@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCheckers.AppHost", "ChineseCheckers\ChineseCheckers.AppHost\ChineseCheckers.AppHost.csproj", "{D012B0E1-A279-4ED4-AE3F-E6C4FB082366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCheckers.ServiceDefaults", "ChineseCheckers\ChineseCheckers.ServiceDefaults\ChineseCheckers.ServiceDefaults.csproj", "{D8043DBD-9263-4AD3-98E3-C94E11B45414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCheckers.ApiService", "ChineseCheckers\ChineseCheckers.ApiService\ChineseCheckers.ApiService.csproj", "{0507B5E7-0E50-4DD7-B85D-B4E60548810E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCheckers.Web", "ChineseCheckers\ChineseCheckers.Web\ChineseCheckers.Web.csproj", "{8514ED1B-31A6-4D4D-BC38-8AC7755B9F34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D012B0E1-A279-4ED4-AE3F-E6C4FB082366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D012B0E1-A279-4ED4-AE3F-E6C4FB082366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D012B0E1-A279-4ED4-AE3F-E6C4FB082366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D012B0E1-A279-4ED4-AE3F-E6C4FB082366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8043DBD-9263-4AD3-98E3-C94E11B45414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8043DBD-9263-4AD3-98E3-C94E11B45414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8043DBD-9263-4AD3-98E3-C94E11B45414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8043DBD-9263-4AD3-98E3-C94E11B45414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0507B5E7-0E50-4DD7-B85D-B4E60548810E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0507B5E7-0E50-4DD7-B85D-B4E60548810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0507B5E7-0E50-4DD7-B85D-B4E60548810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0507B5E7-0E50-4DD7-B85D-B4E60548810E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8514ED1B-31A6-4D4D-BC38-8AC7755B9F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8514ED1B-31A6-4D4D-BC38-8AC7755B9F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8514ED1B-31A6-4D4D-BC38-8AC7755B9F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8514ED1B-31A6-4D4D-BC38-8AC7755B9F34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
