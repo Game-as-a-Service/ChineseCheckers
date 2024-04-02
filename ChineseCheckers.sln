@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChineseCheckers.Web", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChineseCheckers.Tests", "tests\ChineseCheckers.Tests\ChineseCheckers.Tests.csproj", "{07C57EBD-0711-4F4A-A438-18F95CE7393D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCheckers.Domain", "src\ChineseCheckers.Domain\ChineseCheckers.Domain.csproj", "{50647B55-A7DC-456F-941A-51957FEEB148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{07C57EBD-0711-4F4A-A438-18F95CE7393D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C57EBD-0711-4F4A-A438-18F95CE7393D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C57EBD-0711-4F4A-A438-18F95CE7393D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50647B55-A7DC-456F-941A-51957FEEB148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50647B55-A7DC-456F-941A-51957FEEB148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50647B55-A7DC-456F-941A-51957FEEB148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50647B55-A7DC-456F-941A-51957FEEB148}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +59,9 @@ Global
 		{55A8D52B-432B-477F-84F7-3C2565B922EC} = {072D3C5D-A113-45B6-86D6-EF5C54ECA984}
 		{0D1D26B1-A598-4942-B009-847E26A42A67} = {072D3C5D-A113-45B6-86D6-EF5C54ECA984}
 		{07C57EBD-0711-4F4A-A438-18F95CE7393D} = {4370858E-DFB5-4590-AE4D-270098CCAB79}
+		{50647B55-A7DC-456F-941A-51957FEEB148} = {072D3C5D-A113-45B6-86D6-EF5C54ECA984}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {613C01CF-175B-4931-9732-C7B2185B03B2}
 	EndGlobalSection
 EndGlobal

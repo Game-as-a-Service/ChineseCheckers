@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ChineseCheckers.ApiService\ChineseCheckers.ApiService.csproj" />
+    <ProjectReference Include="..\..\src\ChineseCheckers.Domain\ChineseCheckers.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
