@@ -251,7 +251,7 @@ public class MoveChessTest
         Then: InvalidMoveException
         """)]
     [TestMethod]
-    public void CanNotMoveChessButtomRightAfterJumpChess()
+    public void CanNotMoveChessButtomLeftAfterJumpChess()
     {
         // Arrange
         var game = new GameBuilder()
