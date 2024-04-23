@@ -1,10 +1,15 @@
+
+using System.Runtime.Serialization;
+
 namespace ChineseCheckers.Domain;
 
 public class Game
 {
     public bool IsStarted { get; private set; }
+    private readonly Board _board = new();
     private readonly List<Player> _players = [];
 
+    public Board Board => _board;
     public Game()
     {
     }
@@ -22,7 +27,25 @@ public class Game
 
         if (IsStarted == false)
         {
-            // TODO: throw domain exception
+            return;
         }
+
+        _board.Initialize(_players.Count);
     }
+
+    public void MoveChess(int sx, int sy, int dx, int dy)
+    {
+        if (_board.IsValidMove(sx, sy, dx, dy) == false)
+        {
+            throw new InvalidMoveException("Invalid Move");
+        }
+
+        var tmp = _board.GetPieceColor(sx, sy);
+        _board.SetPieceColor(sx, sy, _board.GetPieceColor(dx, dy));
+        _board.SetPieceColor(dx, dy, tmp);
+    }
+}
+
+public class InvalidMoveException(string message) : Exception(message)
+{
 }

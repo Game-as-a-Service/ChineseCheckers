@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ChineseCheckers.ApiService;
+namespace ChineseCheckers.Domain;
 
 // Q1: 棋子要怎麼表示? 
 // 已知 棋子 有 6 種顏色，分別是 紅、橙、黃、綠、藍、紫
@@ -38,7 +38,7 @@ public class Board
             (9,4),(10,4),(11,4),(12,4),
                   (10,5),(11,5),(12,5),
                          (11,6),(12,6),
-                                (12,7), 
+                                (12,7),
         ],
         topLeft = [
             // x-y>=-4, y>=4, x<4
@@ -83,17 +83,20 @@ public class Board
         ]
         ;
 
-    public Board(int players)
+    public Board()
     {
         // 初始化棋盤
         _board = new int[17, 17];
 
-        Initialize(players);
+        // 初始化棋盤
+        FillAll(PieceColor.Block);
     }
+
+    public PieceColor this[int x, int y] => (PieceColor)_board[x, y];
 
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
 
         for (int x = 0; x < 17; x++)
         {
@@ -113,11 +116,8 @@ public class Board
         return "*";
     }
 
-    private void Initialize(int players)
+    public void Initialize(int players)
     {
-        // 初始化棋盤
-        FillAll(PieceColor.Block);
-
         // 中心區域
         FillArea(center, PieceColor.None);
 
@@ -131,14 +131,19 @@ public class Board
                 FillArea(bottomRight, PieceColor.None);
                 FillArea(top, PieceColor.None);
                 FillArea(bottom, PieceColor.None);
+                FillArea([(4, 4), (4, 5), (4, 6), (4, 7), (4, 8)], PieceColor.Red);
+                FillArea([(8, 4), (9, 5), (10, 6), (11, 7), (12, 8)], PieceColor.Orange);
                 break;
             case 3:
-                FillArea(topLeft, PieceColor.Red);
-                FillArea(topRight, PieceColor.Orange);
-                FillArea(bottomLeft, PieceColor.None);
-                FillArea(bottomRight, PieceColor.None);
-                FillArea(top, PieceColor.None);
-                FillArea(bottom, PieceColor.Purple);
+                FillArea(topLeft, PieceColor.None);
+                FillArea(topRight, PieceColor.None);
+                FillArea(bottomLeft, PieceColor.Yellow);
+                FillArea(bottomRight, PieceColor.Green);
+                FillArea(top, PieceColor.Red);
+                FillArea(bottom, PieceColor.None);
+                FillArea([(4, 4), (5, 4), (6, 4), (7, 4), (8, 4)], PieceColor.Red);
+                FillArea([(4, 8), (5, 9), (6, 10), (7, 11), (8, 12)], PieceColor.Yellow);
+                FillArea([(12, 8), (12, 9), (12, 10), (12, 11), (12, 12)], PieceColor.Green);
                 break;
             case 4:
                 FillArea(topLeft, PieceColor.Red);
