@@ -196,45 +196,92 @@ public class Board
         _board[x, y] = (int)color;
     }
 
-    public bool IsValidMove(int fromX, int fromY, int toX, int toY)
+    public bool IsValidMoves(Point[] moves)
+    {
+        MoveType lastMove;
+        for (int i = 0; i < moves.Length - 1; i++)
+        {
+            lastMove = IsValidMove(moves[i].X, moves[i].Y, moves[i + 1].X, moves[i + 1].Y);
+            if (lastMove == MoveType.Error)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public enum MoveType
+    {
+        OneStep, Jump, Error
+    }
+
+    public MoveType IsValidMove(int fromX, int fromY, int toX, int toY)
     {
         // 檢查是否超出絕對邊界
         if (toX < 0 || toX > 16 || toY < 0 || toY > 16)
         {
-            return false;
+            return MoveType.Error;
         }
 
         // From 必須要有棋子
         if (_board[fromX, fromY] <= (int)PieceColor.None)
         {
-            return false;
+            return MoveType.Error;
         }
 
         // To 必須是空位
         if (_board[toX, toY] != (int)PieceColor.None)
         {
-            return false;
+            return MoveType.Error;
         }
 
         // 檢查是否為一步移動
-        if (Math.Abs(fromX - toX) is 0 or 1 && Math.Abs(fromY - toY) is 0 or 1)
+        var isOneStep = (fromX - toX, fromY - toY) switch
         {
-            return true;
+            // 左上
+            (1, 1) => true,
+            // 右上
+            (0, 1) => true,
+            // 右
+            (-1, 0) => true,
+            // 右下
+            (-1, -1) => true,
+            // 左下
+            (0, -1) => true,
+            // 左
+            (1, 0) => true,
+            // 排除不合法的跳躍
+            _ => false
+        };
+
+        if (isOneStep)
+        {
+            return MoveType.OneStep;
         }
 
         // 檢查是否為跳躍移動
         if (Math.Abs(fromX - toX) is 0 or 2 && Math.Abs(fromY - toY) is 0 or 2)
         {
+            // 排除不合法的跳躍
+            if (fromX - toX == 2 && fromY - toY == -2)
+            {
+                return MoveType.Error;
+            }
+            if (fromX - toX == -2 && fromY - toY == 2)
+            {
+                return MoveType.Error;
+            }
+
             int middleX = (fromX + toX) / 2;
             int middleY = (fromY + toY) / 2;
 
             if (_board[middleX, middleY] > (int)PieceColor.None)
             {
-                return true;
+                return MoveType.Jump;
             }
         }
 
-        return false;
+        return MoveType.Error;
     }
 }
 

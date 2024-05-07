@@ -1,6 +1,3 @@
-
-using System.Runtime.Serialization;
-
 namespace ChineseCheckers.Domain;
 
 public class Game
@@ -33,16 +30,16 @@ public class Game
         _board.Initialize(_players.Count);
     }
 
-    public void MoveChess(int sx, int sy, int dx, int dy)
+    public void MoveChess(Point[] moves)
     {
-        if (_board.IsValidMove(sx, sy, dx, dy) == false)
+        if (_board.IsValidMoves(moves) == false)
         {
             throw new InvalidMoveException("Invalid Move");
         }
 
-        var tmp = _board.GetPieceColor(sx, sy);
-        _board.SetPieceColor(sx, sy, _board.GetPieceColor(dx, dy));
-        _board.SetPieceColor(dx, dy, tmp);
+        var tmp = _board.GetPieceColor(moves[0].X, moves[0].Y);
+        _board.SetPieceColor(moves[0].X, moves[0].Y, PieceColor.None);
+        _board.SetPieceColor(moves[^1].X, moves[^1].Y, tmp);
     }
 }
 

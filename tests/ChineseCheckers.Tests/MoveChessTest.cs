@@ -75,7 +75,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        game.MoveChess(4, 0, 5, 1);
+        game.MoveChess([new Point(4, 0), new Point(5, 1)]);
 
         // Assert
         game.Board.GetPieceColor(4, 0).Should().Be(PieceColor.None);
@@ -99,7 +99,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        game.MoveChess(4, 0, 4, 1);
+        game.MoveChess([new Point(4, 0), new Point(4, 1)]);
 
         // Assert
         game.Board.GetPieceColor(4, 0).Should().Be(PieceColor.None);
@@ -109,7 +109,7 @@ public class MoveChessTest
     [Description("""
         Given: (4, 0) is red, (5, 1) is red, (6, 2) is none
         When: (4, 0) jump to (6, 2)
-        Then: InvalidMoveException
+        Then: Success
         """)]
     [TestMethod]
     public void CanJumpChessButtomRight()
@@ -124,7 +124,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        var act = () => game.MoveChess(4, 0, 6, 2);
+        game.MoveChess([new Point(4, 0), new Point(6, 2)]);
 
         // Assert
         game.Board.GetPieceColor(4, 0).Should().Be(PieceColor.None);
@@ -150,7 +150,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        var act = () => game.MoveChess(4, 0, 6, 2);
+        var act = () => game.MoveChess([new Point(4, 0), new Point(6, 2)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
@@ -172,14 +172,14 @@ public class MoveChessTest
             .Build();
 
         // Act
-        var act = () => game.MoveChess(4, 0, 5, 2);
+        var act = () => game.MoveChess([new Point(4, 0), new Point(5, 2)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
     }
 
     [Description("""
-        Given: (4, 3) is red
+        Given: (4, 3) is red, (5, 2) is none
         When: (4, 3) move to (5, 2)
         Then: InvalidMoveException
         """)]
@@ -190,11 +190,12 @@ public class MoveChessTest
         var game = new GameBuilder()
             .WithPlayers("Player 1", "Player 2")
             .WithBoard(4, 3, PieceColor.Red)
+            .WithBoard(5, 2, PieceColor.None)
             .Started(true)
             .Build();
 
         // Act
-        var act = () => game.MoveChess(4, 3, 5, 2);
+        var act = () => game.MoveChess([new Point(4, 3), new Point(5, 2)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
@@ -216,7 +217,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        var act = () => game.MoveChess(7, 3, 5, 2);
+        var act = () => game.MoveChess([new Point(7, 3), new Point(5, 2)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
@@ -239,7 +240,7 @@ public class MoveChessTest
             .Build();
 
         // Act
-        var act = () => game.MoveChess(3, 4, 5, 2);
+        var act = () => game.MoveChess([new Point(3, 4), new Point(5, 2)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
@@ -261,10 +262,9 @@ public class MoveChessTest
             .WithBoard(6, 2, PieceColor.None)
             .Started(true)
             .Build();
-        game.MoveChess(4, 0, 6, 2);
 
         // Act
-        var act = () => game.MoveChess(6, 2, 6, 3);
+        var act = () => game.MoveChess([new Point(4, 0), new Point(6, 2), new Point(6, 3)]);
 
         // Assert
         act.Should().Throw<InvalidMoveException>();
